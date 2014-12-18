@@ -1,0 +1,74 @@
+Background
+
+Create a web service that consumes two separate streams of increasing integers and can be 
+queried to return the next element of the “merged” list, maintaining increasing order. 
+
+Example
+
+If the two data streams return the following,
+
+Stream 1 => 2,6,11,14,15,21...
+
+Stream 2 => 10,11,22,50,88,...
+
+then calls to your service should yield:
+
+2, 6, 10, 11, 11, 14, 15, 21, 22, 50, 88, ...
+
+Server Endpoint
+
+HTTP URL: https://api.xxxxxxxxxxxx.com/quiz/next/<stream_name>
+
+Note:
+
+ Stream_name: any string value without spaces or special characters 
+
+HTTP Method: GET 
+
+HTTP Response (JSON):
+
+{
+
+"last": <the last stream value>
+
+"current": <the current stream value>
+
+"stream": <stream_name>
+
+}
+
+App Requirements
+
+The local web server should have the following functionalities:
+
+1. We should be able to query your server with
+
+HTTP URL:
+
+http://localhost:<port>/quiz/merge?stream1=<stream_name_1>&stream2=<stream_name_2>
+
+Note: 
+
+ stream_name_1: any string value without spaces or special characters, e.g. A, foo, etc 
+
+ stream_name_2: any string value without spaces or special characters, e.g. B, bar, etc
+
+HTTP Method: GET
+
+HTTP response body:
+
+{
+
+"last": 2,
+
+"current": 3
+
+}
+
+2. Must communicate with server endpoint to consume streams of data
+
+3. You may use a web framework of your choice
+
+4. Do not need to actually deploy the server
+
+5. Just send over your code and some brief instructions so we can get it up and running locally

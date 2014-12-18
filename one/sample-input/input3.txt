@@ -1,0 +1,1 @@
+car 10 truck 4 2 bus
